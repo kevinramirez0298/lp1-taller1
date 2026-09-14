@@ -16,7 +16,7 @@ func worker(id int, veces int, wg *sync.WaitGroup) {
 	for i := 1; i <= veces; i++ {
 		fmt.Printf("[worker %d] hola %d\n", id, i)
 		// TODO: dormir un poco para simular trabajo (p. ej. 100–300 ms)
-		
+		time.Sleep(200 * time.Millisecond)
 	}
 }
 
