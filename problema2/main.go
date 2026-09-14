@@ -32,6 +32,12 @@ func concurrente(durs []time.Duration) time.Duration {
 	var wg sync.WaitGroup
 	// TODO: lanzar cada tarea en su propia goroutine y esperar con WaitGroup
 	for i, d := range durs {
+		
+		wg.Add(1)
+		go func(id int, dur time.Duration) {
+			defer wg.Done()
+			tarea(id, dur)
+		}(i, d)
 
 	}
 	wg.Wait()
