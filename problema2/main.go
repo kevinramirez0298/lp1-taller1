@@ -32,7 +32,7 @@ func concurrente(durs []time.Duration) time.Duration {
 	var wg sync.WaitGroup
 	// TODO: lanzar cada tarea en su propia goroutine y esperar con WaitGroup
 	for i, d := range durs {
-		
+	// se agrega el wg.Add(1) para indicar que se va a lanzar una nueva goroutine	
 		wg.Add(1)
 		go func(id int, dur time.Duration) {
 			defer wg.Done()
@@ -46,7 +46,12 @@ func concurrente(durs []time.Duration) time.Duration {
 
 func main() {
 	// TODO: experimenta con diferentes duraciones
-	// durs := []time.Duration{700 * time.Millisecond, 500 * time.Millisecond, 1 * time.Second}
+	// se agregan duraciones de ejemplo para las tareas
+	durs := []time.Duration{
+		700 * time.Millisecond, 
+		500 * time.Millisecond, 
+		1 * time.Second
+	}
 
 	// d1 := 
 	fmt.Println("Duración SEC:", d1)
