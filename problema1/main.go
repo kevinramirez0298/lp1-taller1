@@ -39,6 +39,8 @@ func main() {
 	}
 
 	// Esperar a que todas las goroutines terminen
-	
+	// se agrega el wg.Wait() para esperar a que todas las goroutines terminen
+	wg.Wait()
+
 	fmt.Println("Listo: todas las goroutines terminaron.")
 }
