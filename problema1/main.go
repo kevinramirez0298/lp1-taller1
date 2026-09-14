@@ -28,7 +28,8 @@ func main() {
 	// veces
 	// se agrega numGoroutines
 	numGoroutines := 3
-	
+	// se agrega la variable veces
+	veces := 5	
 
 	// TODO: lanzar varias goroutines, sumar al WG y esperar con wg.Wait()
 	for id := 1; id <= numGoroutines; id++ {
