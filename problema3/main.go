@@ -25,6 +25,7 @@ func incrementarInseguro(nGoroutines, nIncrementos int) int64 {
 			defer wg.Done()
 			for j := 0; j < nIncrementos; j++ {
 				// TODO: incrementar de manera NO atómica (contador = contador + 1)
+				// se incrementa el contador de manera insegura
 				contador = contador + 1	
 			}
 		}()
@@ -37,8 +38,9 @@ func incrementarInseguro(nGoroutines, nIncrementos int) int64 {
 // Variante con Mutex:
 func incrementarConMutex(nGoroutines, nIncrementos int) int64 {
 	var contador int64 = 0
-	// var mu 
-	// var wg 
+	// se agrega un mutex para proteger la sección crítica
+	var mu sync.Mutex
+	var wg sync.WaitGroup
 	wg.Add(nGoroutines)
 
 	for i := 0; i < nGoroutines; i++ {
@@ -46,7 +48,11 @@ func incrementarConMutex(nGoroutines, nIncrementos int) int64 {
 			defer wg.Done()
 			for j := 0; j < nIncrementos; j++ {
 				// TODO: proteger la sección crítica con mu.Lock()/mu.Unlock()
-
+				// se protege la sección crítica con el mutex
+				mu.Lock()
+				contador++ 
+				//se libera el mutex después de incrementar el contador
+				mu.Unlock()
 			}
 		}()
 	}
