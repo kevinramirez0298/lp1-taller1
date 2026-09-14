@@ -21,10 +21,11 @@ func incrementarInseguro(nGoroutines, nIncrementos int) int64 {
 	for i := 0; i < nGoroutines; i++ {
 		go func() {
 			// TODO: asegura wg.Done() se ejecuta al final
-
+			// se agrega defer wg.Done() para asegurar que se llama al finalizar la goroutine
+			defer wg.Done()
 			for j := 0; j < nIncrementos; j++ {
 				// TODO: incrementar de manera NO atómica (contador = contador + 1)
-
+				contador = contador + 1	
 			}
 		}()
 	}
