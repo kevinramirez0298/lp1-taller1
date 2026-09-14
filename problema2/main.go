@@ -50,13 +50,14 @@ func main() {
 	durs := []time.Duration{
 		700 * time.Millisecond, 
 		500 * time.Millisecond, 
-		1 * time.Second
+		1 * time.Second,
 	}
 
-	// d1 := 
+	// se llama a la función secuencial con las duraciones y se imprime la duración total
+	d1 := secuencial(durs) 
 	fmt.Println("Duración SEC:", d1)
 
-	// d2 := 
+	d2 := concurrente(durs) 
 	fmt.Println("Duración CONC:", d2)
 
 	fmt.Println("Nota: la ejecución concurrente debería ser ~max(durs). Cambia valores y observa.")
