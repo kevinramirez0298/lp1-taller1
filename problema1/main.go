@@ -26,6 +26,9 @@ func main() {
 	// TODO: cambiar estos parámetros y observar el intercalado de salidas
 	// numGoroutines
 	// veces
+	// se agrega numGoroutines
+	numGoroutines := 3
+	
 
 	// TODO: lanzar varias goroutines, sumar al WG y esperar con wg.Wait()
 	for id := 1; id <= numGoroutines; id++ {
