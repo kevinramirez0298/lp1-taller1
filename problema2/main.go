@@ -20,6 +20,8 @@ func secuencial(durs []time.Duration) time.Duration {
 	inicio := time.Now()
 	// TODO: ejecutar las tareas en orden, sin goroutines
 	for i, d := range durs {
+		// se llama a la función tarea con los parámetros i y d
+		tarea(i, d)
 
 	}
 	return time.Since(inicio)
