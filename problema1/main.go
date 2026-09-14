@@ -11,7 +11,7 @@ import (
 
 func worker(id int, veces int, wg *sync.WaitGroup) {
 	// TODO: asegurar que al finalizar la función se haga wg.Done()
-	
+	defer wg.Done()
 
 	for i := 1; i <= veces; i++ {
 		fmt.Printf("[worker %d] hola %d\n", id, i)
