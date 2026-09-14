@@ -33,7 +33,9 @@ func main() {
 
 	// TODO: lanzar varias goroutines, sumar al WG y esperar con wg.Wait()
 	for id := 1; id <= numGoroutines; id++ {
-
+		//se agrega el wg.Add(1) para indicar que se va a lanzar una nueva goroutine
+		wg.Add(1)
+		go worker(id, veces, &wg)
 	}
 
 	// Esperar a que todas las goroutines terminen
