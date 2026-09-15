@@ -47,8 +47,11 @@ func deadlock() {
 		// TODO: adquirir mu1
 		// se agrega en la funcion mu1
 		mu1.Lock()
-		
+
 		fmt.Println("G2: listo")
+		// se agrega mu1.unlock() y mu2.unlock()
+		mu1.Unlock()
+		mu2.Unlock()
 	}()
 
 	// ADVERTENCIA: esto no retornará por el deadlock
