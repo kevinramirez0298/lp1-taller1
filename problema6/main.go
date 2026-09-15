@@ -26,8 +26,13 @@ func deadlock() {
 		time.Sleep(100 * time.Millisecond) // fuerza entrelazado
 		fmt.Println("G1: Lock mu2") 
 		// TODO: adquirir mu2
+		// se agrega mu2
+		mu2.Lock()
 
 		fmt.Println("G1: listo")
+		// liberar mu2 y mu1
+		mu2.Unlock()
+		mu1.Unlock()
 	}()
 
 	go func() {
