@@ -45,7 +45,9 @@ func deadlock() {
 		time.Sleep(100 * time.Millisecond)
 		fmt.Println("G2: Lock mu1") 
 		// TODO: adquirir mu1
-
+		// se agrega en la funcion mu1
+		mu1.Lock()
+		
 		fmt.Println("G2: listo")
 	}()
 
