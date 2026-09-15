@@ -20,6 +20,8 @@ func deadlock() {
 		defer wg.Done()
 		fmt.Println("G1: Lock mu1") 
 		// TODO: adquirir mu1
+		// se agrega mu1
+		mu1.Lock()
 
 		time.Sleep(100 * time.Millisecond) // fuerza entrelazado
 		fmt.Println("G1: Lock mu2") 
