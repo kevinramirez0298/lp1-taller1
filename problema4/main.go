@@ -49,7 +49,8 @@ func main() {
 	wg.Add(consumidores)
 	// TODO: lanzar las goroutines consumidoras
 	for i := 1; i <= consumidores; i++ {
-
+		// se agrega go consumirdor (i,ch,&wg) para lanzar cada consumidor en una goroutine
+		go consumidor(i, ch, &wg)
 	}
 
 	go productor(valores, ch)
