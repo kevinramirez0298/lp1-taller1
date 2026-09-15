@@ -74,6 +74,9 @@ func seguroOrdenado() {
 
 			return func() {
 				// TODO: liberar b luego a
+				// se agrega b.unlock() y a.unlock()
+				b.Unlock()
+				a.Unlock()
 
 			}
 		}
