@@ -28,6 +28,9 @@ func (db *baseDatos) leer(clave string) (int, bool) {
 
 func (db *baseDatos) escribir(clave string, valor int) {
 	// TODO: usar Lock/Unlock para escritura
+	// se agrega db.mu.Lock() usas RWMutex, usa Lock para escritura y Unlock para liberar
+	db.mu.Lock()
+	defer db.mu.Unlock()
 
 	db.m[clave] = valor
 }
