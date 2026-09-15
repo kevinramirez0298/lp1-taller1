@@ -39,6 +39,8 @@ func deadlock() {
 		defer wg.Done()
 		fmt.Println("G2: Lock mu2") 
 		// TODO: adquirir mu2
+		// se agrega en la funcion mu2
+		mu2.Lock()
 
 		time.Sleep(100 * time.Millisecond)
 		fmt.Println("G2: Lock mu1") 
