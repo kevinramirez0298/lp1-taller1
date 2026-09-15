@@ -20,6 +20,8 @@ func productor(n int, out chan<- int) {
 		out <- v
 		// TODO: dormir un poco para ver el flujo
 		// usa Sleep con un valor aleatorio entre 100 y 500 ms
+		// se puede usar rand.Intn(401)+100 para obtener un valor entre 100 y 500
+		time.Sleep(time.Duration(rand.Intn(401)+100) * time.Millisecond)
 	}
 }
 
