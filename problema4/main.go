@@ -31,8 +31,11 @@ func consumidor(id int, in <-chan int, wg *sync.WaitGroup) {
 		fmt.Printf("[consumidor %d] recibe %d\n", id, v)
 		// TODO: simular trabajo
 		// usa Sleep con un valor aleatorio entre 100 y 500 ms
+		// Simular trabajo entre 100 y 500 ms.
+		time.Sleep(time.Duration(rand.Intn(401)+100) * time.Millisecond)
 	}
 	fmt.Printf("[consumidor %d] canal cerrado, termina\n", id)
+
 }
 
 func main() {
