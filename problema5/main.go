@@ -61,6 +61,8 @@ func main() {
 
 	// precarga
 	for _, k := range claves {
+		// precarga de valores iniciales 
+		db.escribir(k, 0)
 
 	}
 
