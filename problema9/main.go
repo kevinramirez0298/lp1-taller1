@@ -81,6 +81,9 @@ func main() {
 	for i := 0; i < n; i++ {
 		// TODO: inicializar cada tenedor i
 
+		// se agreega forks para crear eel conjunto de tenedores
+		forks[i] = &tenedor{}
+
 	}
 
 	// lanzar filósofos
