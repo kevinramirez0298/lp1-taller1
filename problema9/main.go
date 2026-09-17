@@ -28,6 +28,8 @@ func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	// se agrega condicional para determinar por que lado coger el tenedor
 	if id%2 == 0 { primero = der segundo = izq
 	}
+	// se llama a la func pensar para pasar el id del filosofo
+	pensar(id)
 	
 }
 
