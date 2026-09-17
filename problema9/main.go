@@ -16,12 +16,19 @@ type tenedor struct{ mu sync.Mutex }
 
 func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	// TODO: desarrolla el código para el filósofo
+	
 	//se agrega wg.Done() para indicar a waitgroup que ya termino 
 	defer wg.Done()
 	fmt.Printf("[filósofo %d] satisfecho\n", id)
+
 	// se agregan variables para guarda los canales izq y der
 	primero := izq
 	segundo := der
+
+	// se agrega condicional para determinar por que lado coger el tenedor
+	if id%2 == 0 { primero = der segundo = izq
+	}
+	
 }
 
 func pensar(id int) {
