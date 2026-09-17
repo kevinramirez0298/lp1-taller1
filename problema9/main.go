@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"sync"
-	"time"
 )
 
 // Objetivo: Implementar una versión del problema de los Filósofos Comensales.
@@ -16,8 +15,8 @@ type tenedor struct{ mu sync.Mutex }
 
 func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	// TODO: desarrolla el código para el filósofo
-	
-	//se agrega wg.Done() para indicar a waitgroup que ya termino 
+
+	//se agrega wg.Done() para indicar a waitgroup que ya termino
 	defer wg.Done()
 	fmt.Printf("[filósofo %d] satisfecho\n", id)
 
@@ -26,14 +25,23 @@ func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	segundo := der
 
 	// se agrega condicional para determinar por que lado coger el tenedor
-	if id%2 == 0 { primero = der segundo = izq
+	if id%2 == 0 {
+		primero = der
+		segundo = izq
 	}
 	// se llama a la func pensar para pasar el id del filosofo
 	pensar(id)
-	
+
 	// Tomar el primer tenedor.
-	 primero.mu.Lock() 
-	 fmt.Printf("[filósofo %d] toma un tenedor\n", id)
+	primero.mu.Lock()
+	fmt.Printf("[filósofo %d] toma un tenedor\n", id)
+
+	// Tomar el segundo tenedor.
+	segundo.mu.Lock()
+	fmt.Printf("[filósofo %d] toma el segundo tenedor\n", id)
+
+	// se llama la func comer
+	comer(id)
 }
 
 func pensar(id int) {
