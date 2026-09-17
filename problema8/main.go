@@ -27,6 +27,8 @@ func asyncCuadrado(x int) <-chan int {
 // en un solo canal.
 func fanIn(channels ...<-chan int) <-chan int {
 	out := make(chan int)
+	// se agrega var wg sync.waitgroup
+	var wg sync.WaitGroup
 
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
