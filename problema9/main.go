@@ -81,9 +81,8 @@ func main() {
 	for i := 0; i < n; i++ {
 		// TODO: inicializar cada tenedor i
 
-		// se agreega forks para crear eel conjunto de tenedores
+		// se agreega forks para crear el conjunto de tenedores
 		forks[i] = &tenedor{}
-
 	}
 
 	// lanzar filósofos
@@ -91,6 +90,9 @@ func main() {
 		izq := forks[i]
 		der := forks[(i+1)%n]
 		// TODO: lanzar goroutine para el filósofo i
+
+		// se llama a la funcion filosofo para pasarle el id, tenedor izquierdo y derecho y el waitgroup
+		go filosofo(i, izq, der, &wg)
 
 	}
 
