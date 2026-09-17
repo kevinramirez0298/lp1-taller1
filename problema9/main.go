@@ -16,7 +16,8 @@ type tenedor struct{ mu sync.Mutex }
 
 func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	// TODO: desarrolla el código para el filósofo
-	
+	//se agrega wg.Done() para indicar a waitgroup que ya termino 
+	defer wg.Done()
 	fmt.Printf("[filósofo %d] satisfecho\n", id)
 }
 
