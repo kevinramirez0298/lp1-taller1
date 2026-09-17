@@ -46,6 +46,10 @@ func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	// se libera para que otra goroutine la pueda usar
 	segundo.mu.Unlock()
 	primero.mu.Unlock()
+
+	// se imprime que el filosofo suelta los tenedores y que esta satisfecho
+	fmt.Printf("[filósofo %d] suelta los tenedores\n", id)
+	fmt.Printf("[filósofo %d] satisfecho\n", id)
 }
 
 func pensar(id int) {
