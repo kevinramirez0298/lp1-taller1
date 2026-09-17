@@ -66,6 +66,9 @@ func comer(id int) {
 	fmt.Printf("[filósofo %d] COMIENDO\n", id)
 	// TODO: simular tiempo de pensar
 
+	// Simular tiempo de comida
+	time.Sleep(200 * time.Millisecond)
+
 }
 
 func main() {
