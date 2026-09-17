@@ -53,7 +53,8 @@ func main() {
 	// TODO: lanzar nWorkers workers
 	wg.Add(nWorkers)
 	for i := 1; i <= nWorkers; i++ {
-
+		// se agrega go worker
+		go worker(i, jobs, results, &wg)
 	}
 
 	// TODO: productor de trabajos
