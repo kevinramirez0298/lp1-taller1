@@ -95,4 +95,9 @@ func main() {
 	// resultados usando fan-In
 	fmt.Println("Resultados usando Fan-In:")
 
+	// Recibimos todos los resultados
+	for resultado := range resultados {
+		fmt.Println(resultado)
+	}
+
 }
