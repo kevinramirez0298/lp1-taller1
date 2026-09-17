@@ -92,4 +92,7 @@ func main() {
 	// Combinamos los canales
 	resultados := fanIn(f4, f5, f6)
 
+	// resultados usando fan-In
+	fmt.Println("Resultados usando Fan-In:")
+
 }
