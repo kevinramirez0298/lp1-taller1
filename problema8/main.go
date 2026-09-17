@@ -58,8 +58,11 @@ func main() {
 	// se imprime resultado
 	fmt.Println("Esperando resultados...")
 	// TODO: Opción 1: esperar cada futuro secuencialmente
+	// se agrega los resultados de los futuros secuenciales
+	resultado1 := <-f1
+	resultado2 := <-f2
+	resultado3 := <-f3
 
-	
 	// TODO: Opción 2: fan-in (combinar múltiples canales)
 	// Pista: crea una función fanIn que recibe múltiples <-chan int y retorna un único <-chan int
 	// que emita todos los valores. Requiere goroutines y cerrar el canal de salida cuando todas terminen.
