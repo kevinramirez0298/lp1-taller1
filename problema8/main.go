@@ -35,8 +35,12 @@ func fanIn(channels ...<-chan int) <-chan int {
 	for _, ch := range channels {
 		go func(c <-chan int) {
 			defer wg.Done()
-
-
+			// se agrega el for para enviar los valores a out
+			for valor := range c {
+				out <- valor
+			}
+		}(ch)
+	}
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
 
