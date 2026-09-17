@@ -16,6 +16,7 @@ func asyncCuadrado(x int) <-chan int {
 	go func() {
 		defer close(ch)
 		// TODO: simular trabajo
+		
 		// simular trabajo
 		time.Sleep(500 * time.Millisecond)
 
@@ -27,44 +28,61 @@ func asyncCuadrado(x int) <-chan int {
 // en un solo canal.
 func fanIn(channels ...<-chan int) <-chan int {
 	out := make(chan int)
+
 	// se agrega var wg sync.waitgroup
 	var wg sync.WaitGroup
+
 	// se agrega wg.add
 	wg.Add(len(channels))
+
 	// se agrega for para recorrer los canales creados
 	for _, ch := range channels {
 		go func(c <-chan int) {
 			defer wg.Done()
+
 			// se agrega el for para enviar los valores a out
 			for valor := range c {
 				out <- valor
 			}
 		}(ch)
 	}
+
 	// Cerramos el canal de salida cuando todos terminaron
 	go func() {
 		wg.Wait()
 		close(out)
 	}()
+
 	// se agrega el return out para que quien llama la funcion pueda recibir los datos
 	return out
 }
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
+
 	// creamos varios futuros
 	f1 := asyncCuadrado(2)
 	f2 := asyncCuadrado(4)
 	f3 := asyncCuadrado(6) 
+
 	// se imprime resultado
 	fmt.Println("Esperando resultados...")
+
 	// TODO: Opción 1: esperar cada futuro secuencialmente
+
 	// se agrega los resultados de los futuros secuenciales
 	resultado1 := <-f1
 	resultado2 := <-f2
 	resultado3 := <-f3
 
+	// se agregan resultados secuenciales
+	fmt.Println("Resultados secuenciales:")
+	fmt.Println(resultado1)
+	fmt.Println(resultado2)
+	fmt.Println(resultado3)
+
 	// TODO: Opción 2: fan-in (combinar múltiples canales)
 	// Pista: crea una función fanIn que recibe múltiples <-chan int y retorna un único <-chan int
 	// que emita todos los valores. Requiere goroutines y cerrar el canal de salida cuando todas terminen.
 	
+
 }
