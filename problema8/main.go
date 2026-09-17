@@ -55,7 +55,8 @@ func main() {
 	f1 := asyncCuadrado(2)
 	f2 := asyncCuadrado(4)
 	f3 := asyncCuadrado(6) 
-
+	// se imprime resultado
+	fmt.Println("Esperando resultados...")
 	// TODO: Opción 1: esperar cada futuro secuencialmente
 
 	
