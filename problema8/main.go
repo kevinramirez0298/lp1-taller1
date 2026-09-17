@@ -21,6 +21,10 @@ func asyncCuadrado(x int) <-chan int {
 	}()
 	return ch
 }
+// fanIn recibe varios canales y combina todos sus resultados
+// en un solo canal.
+func fanIn(channels ...<-chan int) <-chan int {
+	out := make(chan int)
 
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
