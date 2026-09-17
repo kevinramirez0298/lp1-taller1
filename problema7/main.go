@@ -61,6 +61,9 @@ func main() {
 	go func() {
 		for i := 1; i <= nTrabajos; i++ {
 
+			jobs <- trabajo{
+				 ID: i, X: i * 10,}
+
 		}
 		close(jobs) // importante: cerrar para que los workers terminen
 	}()
