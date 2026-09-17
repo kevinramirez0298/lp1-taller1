@@ -19,6 +19,9 @@ func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	//se agrega wg.Done() para indicar a waitgroup que ya termino 
 	defer wg.Done()
 	fmt.Printf("[filósofo %d] satisfecho\n", id)
+	// se agregan variables para guarda los canales izq y der
+	primero := izq
+	segundo := der
 }
 
 func pensar(id int) {
