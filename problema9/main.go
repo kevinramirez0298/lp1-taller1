@@ -42,6 +42,10 @@ func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 
 	// se llama la func comer
 	comer(id)
+
+	// se libera para que otra goroutine la pueda usar
+	segundo.mu.Unlock()
+	primero.mu.Unlock()
 }
 
 func pensar(id int) {
