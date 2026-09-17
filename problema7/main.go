@@ -28,6 +28,13 @@ func worker(id int, jobs <-chan trabajo, results chan<- resultado, wg *sync.Wait
 		// Simular tiempo de procesamiento
 		time.Sleep(200 * time.Millisecond)
 
+		// crear el resultado
+		r := resultado{
+        ID:        j.ID,
+        X:         j.X,
+        Procesado: j.X * 2,
+    }
+
 		fmt.Printf("[worker %d] procesa trabajo %d -> %d\n", id, j.ID, r.Procesado)
 		results <- r
 	}
