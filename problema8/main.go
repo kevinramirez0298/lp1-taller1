@@ -29,6 +29,8 @@ func fanIn(channels ...<-chan int) <-chan int {
 	out := make(chan int)
 	// se agrega var wg sync.waitgroup
 	var wg sync.WaitGroup
+	// se agrega wg.add
+	wg.Add(len(channels))
 
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
