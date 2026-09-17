@@ -31,6 +31,9 @@ func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 	// se llama a la func pensar para pasar el id del filosofo
 	pensar(id)
 	
+	// Tomar el primer tenedor.
+	 primero.mu.Lock() 
+	 fmt.Printf("[filósofo %d] toma un tenedor\n", id)
 }
 
 func pensar(id int) {
