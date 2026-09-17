@@ -14,6 +14,8 @@ func asyncCuadrado(x int) <-chan int {
 	go func() {
 		defer close(ch)
 		// TODO: simular trabajo
+		// simular trabajo
+		time.Sleep(500 * time.Millisecond)
 
 		ch <- x * x
 	}()
