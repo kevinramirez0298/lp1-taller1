@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 // Objetivo: Implementar una versión del problema de los Filósofos Comensales.
@@ -55,6 +56,9 @@ func filosofo(id int, izq, der *tenedor, wg *sync.WaitGroup) {
 func pensar(id int) {
 	fmt.Printf("[filósofo %d] pensando...\n", id)
 	// TODO: simular tiempo de pensar
+
+	// Simular tiempo de pensamiento
+	time.Sleep(200 * time.Millisecond)
 
 }
 
