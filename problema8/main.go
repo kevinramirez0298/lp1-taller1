@@ -51,6 +51,10 @@ func fanIn(channels ...<-chan int) <-chan int {
 }
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
+	// creamos varios futuros
+	f1 := asyncCuadrado(2)
+	f2 := asyncCuadrado(4)
+	f3 := asyncCuadrado(6) 
 
 	// TODO: Opción 1: esperar cada futuro secuencialmente
 
