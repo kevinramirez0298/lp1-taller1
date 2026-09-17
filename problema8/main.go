@@ -46,7 +46,9 @@ func fanIn(channels ...<-chan int) <-chan int {
 		wg.Wait()
 		close(out)
 	}()
-	
+	// se agrega el return out para que quien llama la funcion pueda recibir los datos
+	return out
+}
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
 
