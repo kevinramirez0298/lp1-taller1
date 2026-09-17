@@ -41,6 +41,12 @@ func fanIn(channels ...<-chan int) <-chan int {
 			}
 		}(ch)
 	}
+	// Cerramos el canal de salida cuando todos terminaron
+	go func() {
+		wg.Wait()
+		close(out)
+	}()
+	
 func main() {
 	// TODO: crea varios futuros y recolecta sus resultados: f1, f2, f3
 
