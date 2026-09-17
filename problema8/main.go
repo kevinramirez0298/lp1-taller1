@@ -16,7 +16,7 @@ func asyncCuadrado(x int) <-chan int {
 	go func() {
 		defer close(ch)
 		// TODO: simular trabajo
-		
+
 		// simular trabajo
 		time.Sleep(500 * time.Millisecond)
 
@@ -84,5 +84,10 @@ func main() {
 	// Pista: crea una función fanIn que recibe múltiples <-chan int y retorna un único <-chan int
 	// que emita todos los valores. Requiere goroutines y cerrar el canal de salida cuando todas terminen.
 	
+	// creamos otros futuros para probar fan-In
+	f4 := asyncCuadrado(3)
+	f5 := asyncCuadrado(5)
+	f6 := asyncCuadrado(7)
 
+	
 }
