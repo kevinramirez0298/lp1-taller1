@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	//se agrega sync para goroutines
+	"sync"
 	"time"
 )
 
