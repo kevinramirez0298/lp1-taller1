@@ -89,5 +89,7 @@ func main() {
 	f5 := asyncCuadrado(5)
 	f6 := asyncCuadrado(7)
 
-	
+	// Combinamos los canales
+	resultados := fanIn(f4, f5, f6)
+
 }
